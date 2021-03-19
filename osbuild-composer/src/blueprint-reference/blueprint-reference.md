@@ -4,7 +4,7 @@ Blueprints are simple text files in [TOML format](https://toml.io/en/) that desc
 
 A basic blueprint looks like this:
 
-```toml
+`sd``toml
 name = "base"
 description = "A base system with bash"
 version = "0.0.1"
