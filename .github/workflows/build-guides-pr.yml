@@ -1,0 +1,27 @@
+name: Build guides on Pull Request
+
+on: [pull_request]
+
+jobs:
+  import:
+    name: Import the guides
+    runs-on: ubuntu-latest
+    steps:
+    - name: Setup mdBook
+      uses: peaceiris/actions-mdbook@v1
+      with:
+        mdbook-version: 'latest'
+    - name: Clone local repository
+      uses: actions/checkout@v2
+      with:
+        path: sources
+    - name: List files
+      run: ls -la; ls -la sources
+    - name: Render osbuild-composer guide
+      working-directory: sources/osbuild-composer
+      run: |
+        mdbook build
+    - name: Render cloud-dot-redhat guide
+      working-directory: sources/cloud-dot-redhat
+      run: |
+        mdbook build
